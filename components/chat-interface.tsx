@@ -14,6 +14,8 @@ import Link from "next/link"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { v4 as uuidv4 } from "uuid"
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://sischat.onrender.com";
+
 type Message = {
   id: string
   content: string
@@ -101,7 +103,7 @@ export default function ChatInterface() {
     setIsTyping(true)
 
     try {
-      const response = await fetch("http://127.0.0.1:8080/message", {
+      const response = await fetch(`${API_URL}/message`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ content: userMessage.content }),
@@ -193,7 +195,7 @@ export default function ChatInterface() {
         setIsLoading(true);
 
         try {
-          const response = await fetch("http://127.0.0.1:8080/voice", {
+          const response = await fetch(`${API_URL}/voice`, {
             method: "POST",
             body: formData,
           });
