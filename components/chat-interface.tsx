@@ -14,7 +14,7 @@ import Link from "next/link"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { v4 as uuidv4 } from "uuid"
 
-const API_URL = "https://sischat.onrender.com";
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://sischat.onrender.com";
 
 type Message = {
   id: string
